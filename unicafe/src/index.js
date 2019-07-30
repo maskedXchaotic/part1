@@ -9,22 +9,30 @@ const Button = ({handleClick,text}) => (
 
 const Statistics = ({good,neutral,bad}) => {
   let total = good + neutral +bad
-  return (
-    <>
-    <h1>Statistics</h1>
-    <p>good {good}</p>
-    <p>neutral {neutral}</p>
-    <p>bad {bad}</p>
-    <p>all {total}</p>
-    <p>average {(good-bad)/total}</p>
-    <p>positive {good/total}</p>
-    </>
-  )
+  if(total===0){
+    return(
+      <>
+        <h1>Statistics</h1>
+        <p>No feedback given</p>
+      </>
+    )
+  }
+  else {
+    return (
+        <>
+        <h1>Statistics</h1>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+        <p>all {total}</p>
+        <p>average {(good-bad)/total}</p>
+        <p>positive {good/total}</p>
+        </>
+    )
+  }
+
 }
 
-const Display = (props) => (
-  <p>{props.text} {props.value}</p>
-)
 
 
 const App = () => {
