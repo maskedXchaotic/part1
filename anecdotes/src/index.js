@@ -5,16 +5,18 @@ const App = (props) => {
   const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState([0,0,0,0,0,0])
   const copy = [...points]
+  const max = Math.max(...copy)
+  const maxIndex = copy.indexOf(max)
 
   const handleClick = () => setSelected(Math.floor(Math.random()*6))
   const handleVote = () =>{
     copy[selected]  += 1
     setPoints(copy)
-    console.log(copy)
     return copy
   }
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {props.anecdotes[selected]}
       <br></br>
       <p>has {copy[selected]} votes</p>
@@ -24,6 +26,10 @@ const App = (props) => {
       <button onClick={() => handleClick()}>
         Next Anecdote
       </button>
+      <h1>Anecdote with most votes</h1>
+      {props.anecdotes[maxIndex]}
+      <br></br>
+      <p>has {copy[maxIndex]} votes</p>
     </div>
   )
 }
