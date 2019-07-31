@@ -18,20 +18,23 @@ const Statistics = ({good,neutral,bad}) => {
   }
   else {
     return (
-        <>
+        <table>
         <Statistic text="Good" value={good} />
         <Statistic text="Neutral" value={neutral} />
         <Statistic text="Bad" value={bad} />
         <Statistic text="All" value={total} />
         <Statistic text="Average" value={(good-bad)/total} />
         <Statistic text="Positive" value={good/total*100} per="%" />
-        </>
+        </table>
     )
   }
 }
 
 const Statistic = ({text,value,per}) =>(
-  <p>{text} {value}{per}</p>
+  <tr>
+    <td>{text}</td>
+    <td>{value}{per}</td>
+  </tr>
 )
 
 
